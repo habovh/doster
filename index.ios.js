@@ -19,7 +19,7 @@ import devTools from 'remote-redux-devtools'
 
 const store = createStore(todoApp, {}, devTools({
   hostname: 'localhost',
-  port: 8081
+  port: 5678
 }));
 
 var styles = StyleSheet.create({

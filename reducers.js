@@ -5,19 +5,24 @@ import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, Filters } from './actions
 
 const mockData = [
 	{
-		id: 0,
-		text: 'number 1',
-		completed: false
-	},
-	{
 		id: 1,
-		text: 'number 2',
-		completed: false
+		text: 'Display todo list',
+		completed: true
 	},
 	{
 		id: 2,
-		text: 'number 3',
+		text: 'Toggle todo',
 		completed: true
+	},
+	{
+		id: 3,
+		text: 'Effective filters',
+		completed: true
+	},
+	{
+		id: 4,
+		text: 'Add new todo',
+		completed: false
 	}
 ]
 

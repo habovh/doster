@@ -41,24 +41,43 @@ var styles = StyleSheet.create({
 	}
 })
 
+class AddTodo extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			inputText: ""
+		}
+	}
 
-const AddTodo = (props) => (
-	<View style={styles.addTodoContainer}>
-		<TextInput
-			onSubmitEditing={(event) => props.addTodo(event.nativeEvent.text)}
-			placeholder="What's next?"
-			returnKeyType="done"
-			clearButtonMode="while-editing"
-			enablesReturnKeyAutomatically={true}
-			style={styles.todoInput}
-		/>
-		<TouchableHighlight
-			underlayColor='#37c88b'
-			onPress={() => console.log('Add todo button')}
-			style={styles.addButton}>
-			<Text style={styles.addButtonText}>+ Add</Text>
-		</TouchableHighlight>
-	</View>
-)
+	addNewTodo = () => {
+		this.props.addTodo(this.state.inputText)
+		this.setState({ inputText: "" })
+		this._textInput.blur()
+	}
+
+	render () {
+		return (
+			<View style={styles.addTodoContainer}>
+				<TextInput
+					ref={(input) => this._textInput = input}
+					value={this.state.inputText}
+					onChangeText={inputText => this.setState({ inputText })}
+					onSubmitEditing={this.addNewTodo}
+					placeholder="What's next?"
+					returnKeyType="done"
+					clearButtonMode="while-editing"
+					enablesReturnKeyAutomatically={true}
+					style={styles.todoInput}
+				/>
+				<TouchableHighlight
+					underlayColor='#37c88b'
+					onPress={this.addNewTodo}
+					style={styles.addButton}>
+					<Text style={styles.addButtonText}>+ Add</Text>
+				</TouchableHighlight>
+			</View>
+		)
+	}
+}
 
 export default AddTodo

@@ -5,15 +5,8 @@ import {
 } from 'react-native'
 import Filter from './Filter'
 import TodoList from '../containers/TodoList'
+import AddTodo from '../containers/AddTodo'
 
-const TodoIndex = (props) => (
-	<View style={styles.main}>
-		<Filter {...props} />
-		<TodoList {...props} />
-	</View>
-)
-
-export default TodoIndex
 
 const styles = StyleSheet.create({
 	main: {
@@ -21,3 +14,14 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 })
+
+
+const TodoIndex = (props) => (
+	<View style={styles.main}>
+		<AddTodo />
+		<Filter {...props} />
+		<TodoList {...props} />
+	</View>
+)
+
+export default TodoIndex

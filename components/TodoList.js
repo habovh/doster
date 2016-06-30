@@ -34,7 +34,7 @@ const TodoList = ({ todoDataSource, onTodoPress }) => (
         <TouchableHighlight onPress={() => onTodoPress(todo.id)} underlayColor='#dddddd'>
           <View>
             <View style={styles.rowContainer}>
-              <Text>{todo.completed ? "✅" : "❌"} {todo.text}</Text>
+              <Text>{todo.completed ? "🔳" : "◻️"} {todo.text}</Text>
             </View>
             <View style={styles.separator}/>
           </View>

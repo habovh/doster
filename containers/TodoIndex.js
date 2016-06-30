@@ -1,6 +1,6 @@
 import TodoIndex from '../components/TodoIndex.js'
 import { connect } from 'react-redux'
-import { Filters, setVisibilityFilter } from '../actions'
+import { Filters, setVisibilityFilter, addTodo } from '../actions'
 import _ from 'lodash'
 
 const mapStateToProps = (state) => ({

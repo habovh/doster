@@ -13,7 +13,7 @@ var styles = StyleSheet.create({
 		alignSelf: 'stretch',
 		margin: 10,
 		paddingBottom: 5,
-		borderBottomColor: '#37c88b',
+		borderBottomColor: '#0e7aff',
 		borderBottomWidth: 1
 	},
 	todoInput: {
@@ -27,8 +27,8 @@ var styles = StyleSheet.create({
 		height: 36,
 		flex: 1,
 		flexDirection: 'row',
-		backgroundColor: '#37c88b',
-		borderColor: '#37c88b',
+		backgroundColor: '#0e7aff',
+		borderColor: '#0e7aff',
 		borderWidth: 1,
 		borderRadius: 8,
 		alignSelf: 'stretch',
@@ -70,7 +70,7 @@ class AddTodo extends React.Component {
 					style={styles.todoInput}
 				/>
 				<TouchableHighlight
-					underlayColor='#37c88b'
+					underlayColor='#51bcff'
 					onPress={this.addNewTodo}
 					style={styles.addButton}>
 					<Text style={styles.addButtonText}>+ Add</Text>

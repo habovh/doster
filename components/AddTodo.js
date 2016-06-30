@@ -11,18 +11,17 @@ var styles = StyleSheet.create({
 	addTodoContainer: {
 		flexDirection: 'row',
 		alignSelf: 'stretch',
-		margin: 10
+		margin: 10,
+		paddingBottom: 5,
+		borderBottomColor: '#37c88b',
+		borderBottomWidth: 1
 	},
 	todoInput: {
 		height: 36,
 		padding: 4,
 		marginRight: 5,
 		flex: 4,
-		fontSize: 18,
-		borderWidth: 1,
-		borderColor: '#48bbec',
-		borderRadius: 8,
-		color: '#48bbec'
+		fontSize: 18
 	},
 	addButton: {
 		height: 36,
@@ -32,7 +31,6 @@ var styles = StyleSheet.create({
 		borderColor: '#37c88b',
 		borderWidth: 1,
 		borderRadius: 8,
-		marginBottom: 10,
 		alignSelf: 'stretch',
 		justifyContent: 'center'
 	},
@@ -47,7 +45,7 @@ var styles = StyleSheet.create({
 const AddTodo = (props) => (
 	<View style={styles.addTodoContainer}>
 		<TextInput
-			onSubmitEditing={(value) => console.log('Submitted: ' + value)}
+			onSubmitEditing={(event) => props.addTodo(event.nativeEvent.text)}
 			placeholder="What's next?"
 			returnKeyType="done"
 			clearButtonMode="while-editing"
@@ -57,9 +55,8 @@ const AddTodo = (props) => (
 		<TouchableHighlight
 			underlayColor='#37c88b'
 			onPress={() => console.log('Add todo button')}
-			style={styles.addButton}
-		>
-			<Text style={styles.addButtonText}>Add</Text>
+			style={styles.addButton}>
+			<Text style={styles.addButtonText}>+ Add</Text>
 		</TouchableHighlight>
 	</View>
 )

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 
 const TodoIndex = (props) => (
 	<View style={styles.main}>
-		<AddTodo />
+		<AddTodo {...props} />
 		<Filter {...props} />
 		<TodoList {...props} />
 	</View>

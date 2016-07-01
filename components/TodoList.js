@@ -8,7 +8,9 @@ import {
   ListView,
   Text,
   TouchableHighlight
-} from 'react-native';
+} from 'react-native'
+
+import Swipeout from 'react-native-swipeout'
 
 
 var styles = StyleSheet.create({
@@ -22,8 +24,21 @@ var styles = StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: '#dddddd'
+  },
+  swipeout: {
+    backgroundColor: '#ffffff'
   }
 });
+
+const swipeoutBtns = [
+  {
+    text: 'Delete',
+    type: 'delet',
+    onPress: () => {
+      console.log('Pressed delete')
+    }
+  }
+]
 
 const TodoList = ({ todoDataSource, onTodoPress }) => (
   <View style={styles.container}>
@@ -31,14 +46,19 @@ const TodoList = ({ todoDataSource, onTodoPress }) => (
       automaticallyAdjustContentInsets={false}
       dataSource={todoDataSource}
       renderRow={(todo) =>
-        <TouchableHighlight onPress={() => onTodoPress(todo.id)} underlayColor='#dddddd'>
           <View>
-            <View style={styles.rowContainer}>
-              <Text>{todo.completed ? "🔳" : "◻️"} {todo.text}</Text>
-            </View>
+            <Swipeout
+              right={swipeoutBtns}
+              style={styles.swipeout}
+              autoClose={true}>
+              <TouchableHighlight onPress={() => onTodoPress(todo.id)} underlayColor='#dddddd'>
+              <View style={styles.rowContainer}>
+                <Text>{todo.completed ? "🔳" : "◻️"} {todo.text}</Text>
+              </View>
+              </TouchableHighlight>
+            </Swipeout>
             <View style={styles.separator}/>
-          </View>
-        </TouchableHighlight>}/>
+          </View>}/>
   </View>
   );
 

@@ -44,12 +44,29 @@ var styles = StyleSheet.create({
   },
   todoSwipeDeleteText: {
     color: "#ffffff"
+  },
+  emptyContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  emptyNotice: {
+    fontSize: 30,
+    color: '#dddddd'
+  },
+  emtpyAdditionalNotice: {
+    color: '#dddddd'
   }
 });
 
 
 const TodoList = ({ todoDataSource, onTodoPress, onTodoDeletePress }) => (
-  <View style={styles.container}>
+      todoDataSource.getDataSource().getRowCount() === 0 
+  ? <View style={styles.emptyContainer}>
+      <Text style={styles.emptyNotice}>Nothing to do</Text>
+      <Text style={styles.emtpyAdditionalNotice}>You can add todos on the top of the screen.</Text>
+    </View>
+  : <View style={styles.container}>
       <SwipeableListView
       bounceFirstRowOnMount={false}
       dataSource={todoDataSource}
@@ -77,7 +94,7 @@ const TodoList = ({ todoDataSource, onTodoPress, onTodoDeletePress }) => (
             textStyle={styles.todoSwipeDeleteText}/>
         </SwipeableQuickActions>
       }/>
-  </View>
-);
+  </View> 
+  )
 
 export default TodoList

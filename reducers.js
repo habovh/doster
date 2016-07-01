@@ -26,7 +26,7 @@ const mockData = [
 	}
 ]
 
-function todos(state = mockData, action) {
+function todos(state = [], action) {
 	switch (action.type) {
 		case ADD_TODO:
 			return [

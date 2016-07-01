@@ -20,7 +20,7 @@ export const Filters = [
 ]
 
 //Actions creators
-let nextTodoId = 5
+let nextTodoId = 1
 export function addTodo(text) {
   return {
     type: ADD_TODO,

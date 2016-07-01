@@ -1,7 +1,7 @@
 'use strict';
 
 import { combineReducers } from 'redux';
-import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, Filters } from './actions';
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, SET_VISIBILITY_FILTER, Filters } from './actions';
 
 const mockData = [
 	{
@@ -46,6 +46,8 @@ function todos(state = mockData, action) {
 					}
 					return todo
 				})
+		case DELETE_TODO:
+			return [].concat(state.filter((todo) => (todo.id != action.id)))
 		default:
 			return state
 	}

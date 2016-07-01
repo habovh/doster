@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import { ListView } from 'react-native'
 import { Filters } from '../actions';
-import { toggleTodo } from '../actions'
+import { toggleTodo, deleteTodo } from '../actions'
 import TodoList from '../components/TodoList'
+import SwipeableListView from 'SwipeableListView'
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
@@ -18,14 +19,15 @@ const getVisibleTodos = (todos, filter) => {
 }
 
 const mapStateToProps = (state) => {
-    var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    var ds = new SwipeableListView.getNewDataSource()
     return {
-      todoDataSource: ds.cloneWithRows(getVisibleTodos(state.todos, state.visibilityFilter))
+      todoDataSource: ds.cloneWithRowsAndSections({s1: getVisibleTodos(state.todos, state.visibilityFilter)}, null, null)
     }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onTodoPress: (id) => dispatch(toggleTodo(id))
+  onTodoPress: (id) => dispatch(toggleTodo(id)),
+  onTodoDeletePress: (id) => dispatch(deleteTodo(id))
 })
 
 const VisibleTodoList = connect(
